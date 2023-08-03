@@ -34,7 +34,7 @@ jobs:
           COMMENT_ID: ${{ steps.comment.id }}
         with:
           script: |
-          console.log("comment id" + process.env.COMMENT_ID)
+            console.log("comment id" + process.env.COMMENT_ID)
             github.rest.issues.updateComment({
               comment_id: process.env.COMMENT_ID,
               owner: context.repo.owner,
