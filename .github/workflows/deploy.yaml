@@ -10,6 +10,8 @@ jobs:
       (github.event.action == 'labeled' && github.event.label.name == ':rocket: deploy') ||
       (github.event.action != 'labeled' && contains(github.event.pull_request.labels.*.name, ':rocket: deploy'))
     runs-on: ubuntu-latest
+    permissions:
+      issues: write
     steps:
       - name: Write a comment
         id: comment
