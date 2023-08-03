@@ -23,6 +23,7 @@ jobs:
               repo: context.repo.repo,
               body: '👋 Hi! This is PR ##' + context.issue.number
             })
+            console.log(c.data)
             return c.data
       
       - name: Wait a bit
