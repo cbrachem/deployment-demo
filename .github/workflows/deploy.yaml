@@ -31,7 +31,7 @@ jobs:
       - name: Update comment
         uses: actions/github-script@v6
         env:
-          COMMENT_ID: steps.comment.id
+          COMMENT_ID: ${{ steps.comment.id }}
         with:
           script: |
             github.rest.issues.updateComment({
