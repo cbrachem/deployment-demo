@@ -16,13 +16,12 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            console.log(context);
-            console.log(github);
+
             github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: '👋 Hi! This is PR #' + github.event.number
+              body: '👋 Hi! This is PR #' + context.issue.number
             })
       
       - name: Wait a bit
