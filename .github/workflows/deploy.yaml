@@ -32,12 +32,13 @@ jobs:
       - name: Update comment
         uses: actions/github-script@v6
         env:
-          COMMENT_ID: ${{ steps.comment.outputs.result.id }}
+          COMMENT: ${{ steps.comment.outputs.result }}
         with:
           script: |
-            console.log("comment id" + process.env.COMMENT_ID)
+            const comment = JSON.parse(process.env.COMMENT)
+            console.log("comment id" + comment.id, comment)
             github.rest.issues.updateComment({
-              comment_id: process.env.COMMENT_ID,
+              comment_id: comment.id,
               owner: context.repo.owner,
               repo: context.repo.repo,
               body: 'All done!'
